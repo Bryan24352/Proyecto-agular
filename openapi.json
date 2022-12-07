@@ -1,0 +1,222 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Sun Exp Restful API",
+        "description": "Sun expo API",
+        "version": "1.0.0-oas3"
+    },
+    "servers": [{
+        "url": "https://virtserver.swaggerhub.com/mrinalbarua/bearer-test/1.0.0-oas3",
+        "description": "SwaggerHub API Auto Mocking"
+    }, {
+        "url": "https://virtserver.swaggerhub.com/tinto88/sun-expo-api/1.0.0"
+    }],
+    "security": [{
+        "bearerAuth": []
+    }],
+    "paths": {
+        "/get-course-catalog": {
+            "get": {
+                "tags": ["Product Catalog"],
+                "summary": "Product Catalog",
+                "operationId": "productList",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/inline_response_200"
+                                }
+                            }
+                        }
+                    },
+                    "204": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/inline_response_204"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Failed",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/inline_response_400"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Failed",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/inline_response_401"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Failed",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/inline_response_500"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "enquiryitems": {
+                "required": ["category", "course_id", "course_name", "course_type", "course_url", "description", "duration", "image_url", "intro_url", "keywords", "price"],
+                "type": "object",
+                "properties": {
+                    "category": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "course_id": {
+                        "type": "string",
+                        "example": "1748"
+                    },
+                    "course_name": {
+                        "type": "string",
+                        "format": "int32",
+                        "example": "PMI-PgMP"
+                    },
+                    "description": {
+                        "type": "string",
+                        "format": "int32",
+                        "example": "Program Management Professional (PgMP)® is a credential that is offered by the Project Management Institute (PMI) to individuals who successfully qualify the PgMP® exam."
+                    },
+                    "course_type": {
+                        "type": "string",
+                        "format": "int32",
+                        "example": "OSL"
+                    },
+                    "duration": {
+                        "type": "string",
+                        "format": "int32",
+                        "example": "30 seconds"
+                    },
+                    "image_url": {
+                        "type": "string",
+                        "format": "int32",
+                        "example": "https://www.domain.com/banners/course_page_banners/1280x160/1_Project_management/yellow_1.svgz"
+                    },
+                    "course_url": {
+                        "type": "string",
+                        "format": "int32"
+                    },
+                    "intro_url": {
+                        "type": "string",
+                        "format": "int32",
+                        "example": "http://cfs3.cdn.net/sample_course_videos/Project_Management/PgMP/Lesson_01_Overview_of_PMI_PgMP_Certification_Course.mp4"
+                    },
+                    "price": {
+                        "type": "string",
+                        "format": "int32"
+                    },
+                    "keywords": {
+                        "type": "string",
+                        "format": "int32",
+                        "example": "PGMP, Certification, training, Online, Course"
+                    }
+                }
+            },
+            "inline_response_200": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32",
+                        "example": 200
+                    },
+                    "message": {
+                        "type": "string",
+                        "example": "OK"
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/enquiryitems"
+                        }
+                    }
+                }
+            },
+            "inline_response_400": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32",
+                        "example": 400
+                    },
+                    "message": {
+                        "type": "string",
+                        "example": "Bad request"
+                    }
+                }
+            },
+            "inline_response_401": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32",
+                        "example": 401
+                    },
+                    "message": {
+                        "type": "string",
+                        "example": "Unauthorized"
+                    }
+                }
+            },
+            "inline_response_500": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32",
+                        "example": 500
+                    },
+                    "message": {
+                        "type": "string",
+                        "example": "Internal Server Error"
+                    }
+                }
+            },
+            "inline_response_204": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32",
+                        "example": 204
+                    },
+                    "message": {
+                        "type": "string",
+                        "example": "No content"
+                    }
+                }
+            }
+        },
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "scheme": "bearer",
+                "bearerFormat": "JWT"
+            }
+        }
+    }
+}
